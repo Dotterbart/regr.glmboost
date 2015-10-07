@@ -52,13 +52,13 @@ trainLearner.regr.glmboost = function(.learner, .task, .subset, .weights = NULL,
 #' @export
 predictLearner.regr.glmboost = function(.learner, .model, .newdata, ...) {
 #  type = ifelse(.learner$predict.type == "response", "class", "response")
-  predict(.model$learner.model, newdata = .newdata, ...) # type entfernt
+  p = predict(.model$learner.model, newdata = .newdata, ...) # type entfernt
 #  if (.learner$predict.type == "prob") {
 #    td = .model$task.desc
 #    p = p[, 1L]
 #    levs = c(td$negative, td$positive)
 #    y = propVectorToMatrix(p, levs)
 #  } else {
-#    return(p)
+  return(as.vector(p))
 #  }
 }
